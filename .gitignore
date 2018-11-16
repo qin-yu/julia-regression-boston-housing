@@ -264,3 +264,10 @@ TSWLatexianTemp*
 ### LaTeX Patch ###
 # glossaries
 *.glstex
+
+Part_I-Linear_Regression-Q1-Basis_Function.jl
+Part_I-Linear_Regression-Q2-Overfitting.jl
+Part_I-Linear_Regression-Q3-Overfitting_Sine.jl
+Part_I-Linear_Regression-Q4-Baseline.jl
+Part_I-Linear_Regression-Q5-KRR.jl
+Part_I-Linear_Regression-Q8-Gaussian_Kernel_1NN.jl

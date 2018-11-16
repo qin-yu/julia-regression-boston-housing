@@ -7,6 +7,7 @@ Julia 1.0 was released during JuliaCon in August 2018, two months before I start
 - Linear regression with basis functions:
   - polynomial basis
   - sine basis
+  - overfitting demo
 - Linear regression with 0, 1, or more attributes:
   - naive regression (0 attribute linear regression)
     - in fact, this is just a fancy way of computing the expected value of 𝒚
