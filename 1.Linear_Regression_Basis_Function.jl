@@ -4,7 +4,12 @@
 ##############################
 
 ############################## Starting here:
-using LinearAlgebra # Julia 1.0.1 only
+# If this gives error, please call:
+# using Pkg # Julia 1.0.1 only
+# Pkg.add("Plots")
+# Pkg.add("GR")
+
+using LinearAlgebra
 using Plots
 using Printf
 
@@ -25,19 +30,24 @@ transformed_x_kk(x, k) = hcat(phi1tok(x, k)...)  # Φ(𝒙) as a matrix
 w_k(x, y, k) = transformed_x_kk(x, k) \ y  # 𝝎 = Φ\𝒚
 
 # Formulae - Equation of Fitted Regression Line:
-phi_k(x_test, x_train, y, k) = dot(transformed_x_kk(x_test, k), w_k(x_train, y, k))  # ̂𝑦 = Φ(𝑥) ⋅ 𝝎
+w_phi_k(x_test, x_train, y, k) = dot(transformed_x_kk(x_test, k), w_k(x_train, y, k))  # ̂𝑦 = Φ(𝑥) ⋅ 𝝎
 
 plot(S, line=:scatter, lab="data set", legend=:bottomright)
 W = zeros(4, 4)
 for i = 1:4
-    𝒘Φ(x_test) = phi_k(x_test, x, y, i)
+    𝒘Φ(x_test) = w_phi_k(x_test, x, y, i)
     display(plot!(𝒘Φ, 0, 4, lab="k = $i"))
     W[i,1:i] = w_k(x, y, i)
+
+    # print the formulae for these curves
+    print("k = $i, f(x) = ")
+    for j = 1:i
+        j > 1 && print(" + ")
+        @printf "%.2f" W[i,j]
+        j > 1 && print("x^$(j-1)")
+    end
+    print("\n")
 end
-@printf "k = 1, f(x) = %.2f\n" W[1,1:1]...
-@printf "k = 2, f(x) = %.2f + %.2f𝑥\n" W[2,1:2]...
-@printf "k = 3, f(x) = %.2f + %.2f𝑥 + %.2f𝑥²\n" W[3,1:3]...
-@printf "k = 4, f(x) = %.2f + %.2f𝑥 + %.2f𝑥² + %.2f𝑥³\n" W[4,1:4]...
 savefig("1.1.pdf")
 
 
