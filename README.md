@@ -1,5 +1,10 @@
 # Machine Learning Using Julia v1.0 on Boston Housing Dataset
 
+- [Manifesto](#manifesto)
+- [Overview of Examples](#overview-of-examples)
+  - [Why I chose Julia](#why-i-chose-julia)
+  - [How I Play with Julia](#how-i-play-with-julia)
+
 ## Manifesto
 Julia 1.0 was released during JuliaCon in August 2018, two months before I started to look into machine learning. Dr David Barber, once in a lecture, expressed his faith in Julia's future success, so I decided to pick up Julia for a serious piece of coursework on supervised learning. To my surprise, my friends, including some of the most distinguished students, working on the same piece of coursework chose Python, MATLAB and R. However, Julia is fast(er?) and (more?) expressive, from my recent experience. More importantly, I had fun playing with it.
 
