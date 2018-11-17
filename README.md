@@ -4,11 +4,14 @@
 Julia 1.0 was released during JuliaCon in August 2018, two months before I started to look into machine learning. Dr David Barber, once in a lecture, expressed his faith in Julia's future success, so I decided to pick up Julia for a serious piece of coursework on supervised learning. To my surprise, my friends, including some of the most distinguished students, working on the same piece of coursework chose Python, MATLAB and R. However, Julia is fast(er?) and (more?) expressive, from my recent experience. More importantly, I had fun playing with it.
 
 ## Overview of Examples
+[1] means the example can be found in the `.jl` file with names starting with "1"
 - Linear regression with basis functions:
-  - polynomial basis
-  - sine basis
-  - overfitting demo
-- Linear regression with 0, 1, or more attributes:
+  - [1] polynomial basis & Super Simple Dataset (fit 4 points)
+  - [2] polynomial basis & Simple Dataset (Sine + Gaussian Noise)
+    - overfitting demo
+  - [2] sine basis & Simple Dataset
+    - overfitting demo
+- [3] Linear regression with 0, 1, or more attributes:
   - naive regression (0 attribute linear regression)
     - in fact, this is just a fancy way of computing the expected value of 𝒚
   - linear regression with single attribute
