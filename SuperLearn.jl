@@ -15,7 +15,7 @@ export TRANS_BASIS,
        POLY_OR_SINE,
        sort_matrix_by_jth_col,
        trained_regression_line,
-       trained_regression_line_q4,
+       trained_regression_line_M,
        test_error_k_dim_basis,
        training_error_k_dim_basis,
        get_se
@@ -45,10 +45,10 @@ end
 𝒘(x, y, k) = transformed_x_kk(x, k) \ y  # 𝝎 = Φ\𝒚
 
 # Formulae - Equation of Fitted Regression Line:
-𝒘Φ_q4(X_test, X_train, 𝒚_train, nothing) = transformed_x_kk(X_test, nothing) * 𝒘(X_train, 𝒚_train, nothing)
+𝒘Φ_M(X_test, X_train, 𝒚_train, nothing) = transformed_x_kk(X_test, nothing) * 𝒘(X_train, 𝒚_train, nothing)
 𝒘Φ(x_test, x_train, y, k) = dot(transformed_x_kk(x_test, k), 𝒘(x_train, y, k))  # ̂𝑦 = Φ(𝑥) ⋅ 𝝎
 trained_regression_line = 𝒘Φ
-trained_regression_line_q4 = 𝒘Φ_q4
+trained_regression_line_M = 𝒘Φ_M
 
 # MSE for Testing:
 function test_error_k_dim_basis(𝒙_test, 𝒚_test, 𝒙, 𝒚, k)

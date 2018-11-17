@@ -48,7 +48,7 @@ for i = 1:4
     end
     print("\n")
 end
-savefig("1.1.pdf")
+savefig("./graph/1.1.pdf")
 
 
 ############################## Training Error
@@ -60,4 +60,4 @@ mse_k(x, y, k) = sse_k(x, y, k) / first(size(y))
 
 MSE = [mse_k(x, y, i) for i = 1:4]
 plot(MSE, xlabel="k", lab="MSE")
-savefig("1.2.pdf")
+savefig("./graph/1.2.pdf")

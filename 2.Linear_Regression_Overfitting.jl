@@ -48,7 +48,7 @@ g₀₀₇(x) = g(0.07, x)
 𝒚 = vcat(g₀₀₇.(𝒙)...)
 scatter!(𝒙, 𝒚, lab="S")
 
-savefig("2.1.pdf")
+savefig("./graph/2.1.pdf")
 
 ############################## Train 20 regressions:
 # I am using trained_regression_line() from my own package,
@@ -59,7 +59,7 @@ regression_curves = [x -> trained_regression_line(x, 𝒙, 𝒚, i) for i in 1:2
 for i = 1:3:size(regression_curves, 1)
     display(plot(regression_curves[i], 0, 1, lab="k = $i"))
     display(scatter!(𝒙, 𝒚, lab="S"))
-    savefig("2.2-$i.pdf")
+    savefig("./graph/2.2-$i.pdf")
 end
 
 
@@ -67,7 +67,6 @@ end
 te_k(k) = training_error_k_dim_basis(𝒙, 𝒚, k)
 te_k_1to20 = te_k.(1:20)
 log_te_k_1to20 = log.(te_k_1to20)
-#plot(1:20, te_k_1to20)
 plot(1:20, log_te_k_1to20, xlabel="k", xticks=0:20, ylabel="log training MSE", lab="log(te(k, S))")
 
 ############################## Testing Error with Testing Set of Size 1000:
@@ -79,11 +78,9 @@ scatter(𝒙_test, 𝒚_test)
 tse_k(k) = test_error_k_dim_basis(𝒙_test, 𝒚_test, 𝒙, 𝒚, k)
 tse_k_1to20 = tse_k.(1:20)
 log_tse_k_1to20 = log.(tse_k_1to20)
-#plot!(1:20, tse_k_1to20)
 plot(1:20, log_te_k_1to20, xlabel="k", xticks=0:20, ylabel="log MSE", lab="log(te(k, S))")
 plot!(1:20, log_tse_k_1to20, lab="log(tse(k, S, T))")
-# tse_k(k) = test_error_k_dim_basis(𝒙, 𝒚, 𝒙, 𝒚, k)  # Testing if this func's correctness
-savefig("2.3.pdf")
+savefig("./graph/2.3.pdf")
 
 ############################## Obtain Previous Result 100 Times and Get Log-Average:
 sum_all_100_te = fill(0, 20)
@@ -110,7 +107,7 @@ log_all_100_te = log.(avg_all_100_te)
 log_all_100_tse = log.(avg_all_100_tse)
 plot(1:20, log_all_100_te, xlabel="k", xticks=0:20, ylabel="log average MSE", lab="log(avg(te(k, S)))")
 plot!(1:20, log_all_100_tse, lab="log(avg(tse(k, S, T)))")  # run this section again, the larger k tail varies
-savefig("2.4.pdf")
+savefig("./graph/2.4.pdf")
 
 
 ############################## To Change Polynomial Basis to Sine Basis, Run:

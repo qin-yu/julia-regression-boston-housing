@@ -93,7 +93,7 @@ for i = 1:20
     global sum_all_20_tse += test_error_k_dim_basis(ones_test, 𝒚_test, ones_train, 𝒚_train, 1)
 end
 current()
-savefig("3.1.pdf")
+savefig("./graph/3.1.pdf")
 # Obtain average MSEs for testing/training over 20 runs:
 avg_all_20_te  = sum_all_20_te / 20
 avg_all_20_tse = sum_all_20_tse / 20
@@ -119,7 +119,7 @@ for j = 1:20
 
         sum_all_20_te[i]  += training_error_k_dim_basis(𝒙_train, 𝒚_train, nothing)
         sum_all_20_tse[i] += test_error_k_dim_basis(𝒙_test, 𝒚_test, 𝒙_train, 𝒚_train, nothing)
-        j == 1 && savefig("3.2-$i.pdf")
+        j == 1 && savefig("./graph/3.2-$i.pdf")
     end
 end
 avg_all_20_te  = sum_all_20_te / 20
@@ -132,7 +132,7 @@ X_test  = matdata[1:nrow_test, 1:13]
 X_train = matdata[nrow_test+1:nrow, 1:13]
 𝒚_test  = matdata[1:nrow_test, 14]
 𝒚_train = matdata[nrow_test+1:nrow, 14]
-trl(X_test) = trained_regression_line_q4(X_test, X_train, 𝒚_train, nothing)
+trl(X_test) = trained_regression_line_M(X_test, X_train, 𝒚_train, nothing)
 scatter!(nrow_test+1:nrow, trl(X_train))
 
 # Have a look at our training result:
@@ -151,17 +151,17 @@ for j = 1:20
     𝒚_test  = permuted_matdata[1:nrow_test, 14]
     𝒚_train = permuted_matdata[nrow_test+1:nrow, 14]
 
-    trl(X_test) = trained_regression_line_q4(X_test, X_train, 𝒚_train, nothing)
+    trl(X_test) = trained_regression_line_M(X_test, X_train, 𝒚_train, nothing)
     display(plot!(1:nrow, trl(sorted_matdata[:, 1:13]), lab="$j th run"))  # current() outside loop, display() inside!!
 
     sum_all_20_te[14]  += training_error_k_dim_basis(X_train, 𝒚_train, nothing)
     sum_all_20_tse[14] += test_error_k_dim_basis(X_test, 𝒚_test, X_train, 𝒚_train, nothing)
 end
-savefig("3.3.pdf")
+savefig("./graph/3.3.pdf")
 avg_all_20_te[14]  = sum_all_20_te[14] / 20
 avg_all_20_tse[14] = sum_all_20_tse[14] / 20
 
 ############################## Comparing the Result (More Detailed Comparisons in 4.jl)
 plot(avg_all_20_te, xlabel="attributes, 14th is all-attribute", xticks=0:14, ylabel="MSE", lab="avg training MSE")
 plot!(avg_all_20_tse, lab="avg testing MSE")
-savefig("3.4.pdf")
+savefig("./graph/3.4.pdf")
