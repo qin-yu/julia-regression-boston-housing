@@ -129,7 +129,7 @@ min_mse, σ_γ_indices = findmin(MSE)
 # Plot heatmap, take log so that the colourscale makes more sense:
 heatmap(log2.(𝛄), log2.(𝛔), xticks=-40:-26, xlabel="gamma",
                             yticks=7:.5:13, ylabel="sigma", log.(log.(SSE)))
-savefig("4.1.pdf")
+savefig("./graph/4.1.pdf")
 
 
 ############################## !! Comparing Everything !!
@@ -216,7 +216,7 @@ mse20_train = sse20_train/nrow_train
 mse20_test  = sse20_test/nrow_test
 plot(mse20_train, lab="training error")
 plot!(mse20_test, lab="testing error")
-savefig("4.2.pdf")
+savefig("./graph/4.2.pdf")
 
 # x₁, ..., xₙ are n independent obeservations from a population
 # that has mean μ and variance σ, then the variance of Σxᵢ is nσ²
@@ -333,14 +333,15 @@ jl4_𝐄_str = (x -> @sprintf("%.2f", x)).(jl4_𝐄)
 jl4_𝛔_str = (x -> @sprintf("%.2f", x)).(jl4_𝛔)
 jl4 = jl4_𝐄_str .* " ± " .* jl4_𝛔_str
 
-q5_DataFrame = convert(DataFrame, jl4)
-names!(q5_DataFrame, [:E, :sigma])
-q5_DataFrame[:Regression] = vcat(["Naive"], ["x$i" for i in 1:13], ["x"], ["KRR"])
-q5_DataFrame = q5_DataFrame[[:Regression, :E, :sigma]]
+compare_table = convert(DataFrame, jl4)
+names!(compare_table, [:E, :sigma])
+compare_table[:Regression] = vcat(["Naive"], ["x$i" for i in 1:13], ["x"], ["KRR"])
+compare_table = compare_table[[:Regression, :E, :sigma]]
 
-print(q5_DataFrame)
+# Save table to file:
+print(compare_table)
 io = open("./data/final_compare.txt", "w")
-print(io, q5_DataFrame)
+print(io, compare_table)
 close(io)
 
 # 16×3 DataFrame
