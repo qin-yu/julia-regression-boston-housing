@@ -1,4 +1,6 @@
-# Machine Learning Using Julia v1.0 on Boston Housing Dataset
+# Machine Learning Using Julia v1.0 on Boston Housing Dataset 
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/qin-yu/ml-julia-boston-housing/blob/master/LICENSE)
+[![Julia v1.0.1](https://img.shields.io/badge/Julia-v1.0.1-brightgreen.svg)](https://julialang.org/blog/2018/08/one-point-zero)
 
 - [Manifesto](#manifesto)
 - [Overview of Examples](#overview-of-examples)
