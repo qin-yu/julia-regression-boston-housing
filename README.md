@@ -1,6 +1,8 @@
-# Machine Learning Using Julia v1.0 on Boston Housing Dataset 
+# Machine Learning (Regression) Using Julia v1.0 on Boston Housing Dataset 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/qin-yu/ml-julia-boston-housing/blob/master/LICENSE)
 [![Julia v1.0.1](https://img.shields.io/badge/Julia-v1.0.1-brightgreen.svg)](https://julialang.org/blog/2018/08/one-point-zero)
+
+*This code and its results are "correct" as they had been reviewed by some well-informed PhD at UCL, 12th Dec, 2018.*
 
 - [Manifesto](#manifesto)
 - [Overview of Examples](#overview-of-examples)
@@ -75,4 +77,3 @@ The name for this dataset is simply boston. It has two prototasks: `nox`, in whi
   `MEDV` - Median value of owner-occupied homes in $1000's  
 
 "The boston housing data set as “.mat” ﬁle is located at [Prof. Mark Herbster's Website (UCL)](http://www.cs.ucl.ac.uk/staff/M.Herbster/boston) otherwise please go to URL above to retrieve in as a text ﬁle."
----- Prof. M. Herbster
